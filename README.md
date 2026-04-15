@@ -73,7 +73,8 @@ Ores are detected with colored bounding boxes in the overlay. Priority order is 
 
 ## Screenshots
 
-*Coming soon — add screenshots of the GUI and overlay here.*
+<img width="733" height="1009" alt="imageforb0at2" src="https://github.com/user-attachments/assets/3ccd2eaa-e3e4-4319-b973-c02e413f920a" />
+<img width="1362" height="781" alt="imageforb0at1" src="https://github.com/user-attachments/assets/1b323649-4212-4976-b5ab-24eee4862415" />
 
 ---
 
@@ -83,6 +84,7 @@ Ores are detected with colored bounding boxes in the overlay. Priority order is 
 - **Python:** 3.10+
 - **GPU:** Optional (CUDA-compatible GPU for faster detection; CPU fallback supported)
 - **Game:** Rs-Classic Clients (Java-based)
+- **Game settings:** Certain text needs to be highly visible
 
 ### Python Dependencies
 
@@ -165,7 +167,7 @@ All settings are saved to **`config.json`** and persist between sessions:
 
 ```jsonc
 {
-  "window_title": "RSCRevolution",
+  "window_title": "RSC*****",
   "ore_checkboxes": { "tin_rock": true, "copper_rock": true, ... },
   "priority_order": ["iron_rock", "copper_rock", ...],
   "fast_mining_enabled": true,
@@ -233,7 +235,7 @@ RSC_miningbotv1/
 
 | Problem | Solution |
 |---------|----------|
-| Bot can't find game window | Ensure RSCRevolution is running; check that the window title matches in config |
+| Bot can't find game window | Ensure RSC***** is running; check that the window title matches in config |
 | Low detection accuracy | Lower the confidence threshold in Settings (try 0.50–0.70) |
 | OCR not reading fatigue/inventory | Check `Tools&Test/` diagnostic scripts; ensure EasyOCR is installed |
 | Slow detection | Install CUDA-compatible PyTorch for GPU acceleration |
