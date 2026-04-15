@@ -8,7 +8,6 @@ An automated mining bot for ANY Runescape Classic Server. Powered by real-time Y
 ![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey?logo=windows)
 
 
-To do: Clean up GUI , Enforce 100% fatigue stop perfectly, Get better best.pt trained YOLO models on ALL Rs-Classic ore rocks.(So that it will be compatible from tin/copper all the way up to Runite)
 ---
 
 ## Table of Contents
@@ -249,6 +248,10 @@ For detailed OCR troubleshooting, see [`Tools&Test/OCR_SETUP_AND_TROUBLESHOOTING
 
 ---
 
+
+
+To do: Clean up GUI , Enforce 100% fatigue stop perfectly, Get better best.pt trained YOLO models on ALL Rs-Classic ore rocks.(So that it will be compatible from tin/copper all the way up to Runite)
+---
 ## Disclaimer
 
 This bot is intended for educational purposes and use on private servers that permit automation. Use responsibly and in accordance with the rules of the server you are playing on. The authors are not responsible for any consequences of using this software.
