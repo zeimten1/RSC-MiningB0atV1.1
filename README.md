@@ -7,6 +7,9 @@ An automated mining bot for ANY Runescape Classic Server. Powered by real-time Y
 ![OpenCV](https://img.shields.io/badge/OpenCV-4.8+-green?logo=opencv)
 ![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey?logo=windows)
 
+
+To do: Clean up GUI , Enforce 100% fatigue stop perfectly, Get better best.pt trained YOLO models on ALL Rs-Classic ore rocks.
+Clean up Break timers as a slider bar, label them. 
 ---
 
 ## Table of Contents
