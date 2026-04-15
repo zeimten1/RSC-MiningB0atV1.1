@@ -1,0 +1,53 @@
+{
+    "window_title": "RSCRevolution",
+    "ore_checkboxes": {
+        "tin_rock": false,
+        "copper_rock": false,
+        "coal_rock": false,
+        "mithril_rock": false,
+        "iron_rock": true,
+        "adamantite_rock": false
+    },
+    "show_empty_ore": true,
+    "priority_order": [
+        "iron_rock",
+        "copper_rock",
+        "tin_rock",
+        "mithril_rock",
+        "coal_rock",
+        "adamantite_rock"
+    ],
+    "break_settings": {
+        "breaks_enabled": false,
+        "min_seconds_between_breaks": 900,
+        "max_seconds_between_breaks": 900,
+        "min_break_duration_seconds": 1,
+        "max_break_duration_seconds": 20,
+        "micro_breaks_enabled": true,
+        "micro_break_min_ms": 100,
+        "micro_break_max_ms": 500
+    },
+    "mouse_settings": {
+        "min_delay_ms": 200,
+        "max_delay_ms": 500,
+        "human_curve_strength": 0.7
+    },
+    "model_settings": {
+        "use_main_model": true,
+        "use_adamantite_model": false
+    },
+    "detection_settings": {
+        "confidence_threshold": 0.8003623188405796,
+        "update_interval_ms": 200,
+        "no_ore_retry_delay_ms": 500
+    },
+    "antiban_failsafe_enabled": true,
+    "powermine_enabled": true,
+    "fatigue_detection_enabled": true,
+    "stop_on_full_inventory": false,
+    "fast_mining_enabled": true,
+    "overlay_mode": "ingame",
+    "mouse_outside_window": false,
+    "theme": "Magenta + Black",
+    "font": "Courier New"
+}
