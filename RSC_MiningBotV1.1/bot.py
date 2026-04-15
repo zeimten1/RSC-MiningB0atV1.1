@@ -632,6 +632,8 @@ class MiningBot:
         except Exception:
             pass
 
+        self._mouse_parked_outside = False
+
         # instantiate mss in the bot thread to avoid cross-thread issues
         from mss import mss as _mss
         self.sct = _mss()
@@ -762,6 +764,8 @@ class MiningBot:
                     self.mouse_x = click_pos[0]
                     self.mouse_y = click_pos[1]
                     
+                    # If mouse was parked outside, it goes straight to the ore click
+                    self._mouse_parked_outside = False
                     self.mouse.move_and_click(click_pos)
                     
                     # Record the time of this click (in milliseconds since epoch)
@@ -786,12 +790,16 @@ class MiningBot:
                             else:
                                 ox, oy = random.randint(left, left + w), top + h + offset
                             self.mouse.move_mouse(ox, oy)
-                            # Brief pause outside, then return mouse into the game window
-                            time.sleep(random.uniform(0.3, 1.0))
-                            # Move back to a random spot inside the game window
-                            rx = random.randint(left + int(w * 0.15), left + int(w * 0.85))
-                            ry = random.randint(top + int(h * 0.15), top + int(h * 0.85))
-                            self.mouse.move_mouse(rx, ry)
+                            self._mouse_parked_outside = True
+
+                            if self.fast_mining_enabled:
+                                # Fast mode: brief pause outside then return immediately
+                                time.sleep(random.uniform(0.3, 1.0))
+                                rx = random.randint(left + int(w * 0.15), left + int(w * 0.85))
+                                ry = random.randint(top + int(h * 0.15), top + int(h * 0.85))
+                                self.mouse.move_mouse(rx, ry)
+                                self._mouse_parked_outside = False
+                            # Lazy mode: mouse stays outside until move_and_click on next ore
                         except Exception:
                             pass
 
