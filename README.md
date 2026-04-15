@@ -77,6 +77,9 @@ Ores are detected with colored bounding boxes in the overlay. Priority order is 
 <img width="1362" height="781" alt="imageforb0at1" src="https://github.com/user-attachments/assets/62140452-0c96-4d5d-ad04-0a389857965e" />
 
 <img width="733" height="1009" alt="imageforb0at2" src="https://github.com/user-attachments/assets/3ccd2eaa-e3e4-4319-b973-c02e413f920a" />
+
+![Screenshot_1](https://github.com/user-attachments/assets/068205c1-dfbf-464c-a2ba-b1a7f7789e93)
+
 ---
 
 ## Requirements
