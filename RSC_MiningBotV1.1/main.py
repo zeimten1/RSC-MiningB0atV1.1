@@ -133,7 +133,6 @@ class MiningBotGUI:
         self._build_ui()
 
         self.root.bind_all('<F6>', self.toggle_bot)
-        self._hotkey_registered = False
         self.start_hotkey_listener()
 
     # ── Config ────────────────────────────────────────────────────────────────
@@ -1128,37 +1127,32 @@ class MiningBotGUI:
             self.start_bot()
 
     def start_hotkey_listener(self):
+        self._hotkey_alive = True
         def _thread():
             user32 = ctypes.windll.user32
-            try:
-                if user32.RegisterHotKey(None, 1, 0, VK_F6):
-                    self._hotkey_registered = True
-                    self.log_debug('Global F6 hotkey registered')
-                else:
-                    self.log_debug('Global hotkey registration failed')
-            except Exception as e:
-                self.log_debug(f'Hotkey error: {e}')
-            msg = wintypes.MSG()
-            while True:
-                res = user32.GetMessageW(ctypes.byref(msg), None, 0, 0)
-                if res in (0, -1):
-                    break
-                if msg.message == WM_HOTKEY:
-                    try:
-                        self.root.after(0, self.toggle_bot)
-                    except Exception:
-                        pass
-                user32.TranslateMessage(ctypes.byref(msg))
-                user32.DispatchMessageW(ctypes.byref(msg))
+            was_pressed = False
+            self.log_debug('Global F6 hotkey listener started (polling)')
+            while self._hotkey_alive:
+                try:
+                    state = user32.GetAsyncKeyState(VK_F6)
+                    # Bit 15 (0x8000) = key is currently held down
+                    if state & 0x8000:
+                        if not was_pressed:
+                            was_pressed = True
+                            try:
+                                self.root.after(0, self.toggle_bot)
+                            except Exception:
+                                pass
+                    else:
+                        was_pressed = False
+                except Exception:
+                    pass
+                time.sleep(0.05)  # 50ms poll – low CPU usage
         threading.Thread(target=_thread, daemon=True).start()
 
     def on_closing(self):
+        self._hotkey_alive = False
         self.stop_bot()
-        try:
-            if getattr(self, '_hotkey_registered', False):
-                ctypes.windll.user32.UnregisterHotKey(None, 1)
-        except Exception:
-            pass
         self.root.destroy()
 
 
